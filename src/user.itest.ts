@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client"
+import { getPrisma } from "./prismaClient"
 
 describe('user model', () => { 
-  const prisma = new PrismaClient()
+  const prisma = getPrisma(process.env.DATABASE_URL)
 
   beforeEach(async () => {
     await prisma.$queryRawUnsafe(`TRUNCATE "User";`)
