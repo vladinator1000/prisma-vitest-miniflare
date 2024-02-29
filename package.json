@@ -5,6 +5,7 @@
   "description": "",
   "scripts": {
     "dev": "wrangler dev",
+    "codegen": "prisma generate",
     "itest": "prisma generate && NODE_OPTIONS='--experimental-vm-modules' vitest --config ./vitest.config.integration.ts",
     "test": "vitest --config ./vitest.config.unit.ts"
   },
