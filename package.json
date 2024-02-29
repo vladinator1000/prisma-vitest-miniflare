@@ -1,11 +1,12 @@
 {
   "name": "prisma-vitest-miniflare",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "scripts": {
     "dev": "wrangler dev",
     "itest": "prisma generate && NODE_OPTIONS='--experimental-vm-modules' vitest --config ./vitest.config.integration.ts",
-    "test": "NODE_OPTIONS='--experimental-vm-modules' vitest --config ./vitest.config.unit.ts"
+    "test": "vitest --config ./vitest.config.unit.ts"
   },
   "author": "",
   "license": "ISC",
