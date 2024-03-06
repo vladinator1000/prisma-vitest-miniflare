@@ -1,8 +1,16 @@
-import { defineConfig } from 'vitest/config'
+import { defineWorkersConfig } from "@cloudflare/vitest-pool-workers/config";
 
-export default defineConfig({
+
+export default defineWorkersConfig({
   test: {
     globals: true,
-    environment: 'miniflare',
+    poolOptions: {
+      workers: {
+        isolatedStorage: true,
+        wrangler: {
+          configPath: "./wrangler.toml"
+        }
+      },
+    },
   },
-})
+});

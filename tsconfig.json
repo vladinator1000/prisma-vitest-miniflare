@@ -25,7 +25,6 @@
     "types": [
       "@types/node",
       "vitest/globals",
-      "vitest-environment-miniflare/globals",
       "@cloudflare/workers-types",
     ]
   },

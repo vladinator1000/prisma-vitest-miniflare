@@ -1,10 +1,18 @@
 import { defineConfig } from 'vitest/config'
+import { defineWorkersConfig } from '@cloudflare/vitest-pool-workers/config'
 
-export default defineConfig({
+export default defineWorkersConfig({
   test: {
     globals: true,
-    environment: 'miniflare',
     include: ['**.itest.ts'],
+    poolOptions: {
+      workers: {
+        isolatedStorage: true,
+        wrangler: {
+          configPath: './wrangler.toml',
+        },
+      },
+    },
     // The lines below are equivalent to Jest's --runInBand
     // "Run all tests serially in the current process, rather than creating a worker pool of child processes that run tests."
     fileParallelism: false,
