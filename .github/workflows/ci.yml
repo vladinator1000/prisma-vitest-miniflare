@@ -1,0 +1,33 @@
+
+name: Continuous integration
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build_and_test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    env:
+      ENVIRONMENT: test
+
+    strategy:
+      matrix:
+        node-version: [21.x]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: ⚙ Test
+        run: npm run test
+        
