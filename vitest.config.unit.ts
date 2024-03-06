@@ -1,5 +1,3 @@
-import { defineConfig } from 'vitest/config'
-
 import { defineWorkersConfig } from "@cloudflare/vitest-pool-workers/config";
 
 
