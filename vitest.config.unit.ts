@@ -1,17 +1,18 @@
 import { defineConfig } from 'vitest/config'
-import { defineWorkersPoolOptions } from '@cloudflare/vitest-pool-workers/config'
 
-export default defineConfig({
+import { defineWorkersConfig } from "@cloudflare/vitest-pool-workers/config";
+
+
+export default defineWorkersConfig({
   test: {
     globals: true,
-    pool: '@cloudflare/vitest-pool-workers',
     poolOptions: {
-      workers: defineWorkersPoolOptions({
+      workers: {
         isolatedStorage: true,
         wrangler: {
-          configPath: './wrangler.toml',
-        },
-      }),
+          configPath: "./wrangler.toml"
+        }
+      },
     },
   },
-})
+});
