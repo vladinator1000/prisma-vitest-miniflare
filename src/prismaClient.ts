@@ -1,15 +1,7 @@
-import { PrismaClient } from '@prisma/client'
-import { PrismaPg } from '@prisma/adapter-pg'
-import pg from 'pg'
+import { PrismaClient } from "@prisma/client";
+import { PrismaD1 } from "@prisma/adapter-d1";
 
-export function getPrisma(databaseUrl?: string) {
-  if (!databaseUrl) {
-    throw new Error('Missing databaseUrl')
-  }
-
-  const pool = new pg.Pool({ connectionString: databaseUrl })
-  const adapter = new PrismaPg(pool)
-  const prisma = new PrismaClient({ adapter })
-
-  return prisma
+export function getPrisma(DB: D1Database) {
+  const adapter = new PrismaD1(DB)
+  return new PrismaClient({ adapter })
 }

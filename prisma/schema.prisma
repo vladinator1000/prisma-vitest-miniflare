@@ -1,14 +1,29 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar()
+  id     Int     @id @default(autoincrement())
+  name   String
+  genres Genre[]
+  events Event[]
+}
+
+model Genre {
+  id     Int     @id @default(autoincrement())
+  name   String  @unique
+  users  User[]
+  events Event[]
+}
+
+model Event {
+  id     Int     @id @default(autoincrement())
+  genres Genre[]
+  users  User[]
 }
