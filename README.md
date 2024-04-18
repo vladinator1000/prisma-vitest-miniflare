@@ -12,7 +12,7 @@ npm run codegen
 
 Run the migrations
 ```
-npx wrangler d1 migrations apply test --local
+npm run db-migrate
 ```
 
 Run the tests
