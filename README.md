@@ -17,10 +17,10 @@ npm run codegen
 
 Run the migrations
 ```
-npx prisma migrate dev
+npx wrangler d1 migrations apply test --local
 ```
 
-Run the integration tests
+Run the tests
 ```
 npm run itest
 ```

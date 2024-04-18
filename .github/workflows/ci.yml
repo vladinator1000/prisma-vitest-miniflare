@@ -32,6 +32,9 @@ jobs:
       - name: Generate code
         run: npm run gen
 
+      - name: Migrate
+        run: npx wrangler d1 migrations apply test --local
+
       - name: ⚙ Test
         run: npm run test
 

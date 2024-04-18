@@ -1,7 +1,8 @@
+import { env } from "cloudflare:test"
 import { getPrisma } from "./prismaClient"
 
 describe('user model', () => { 
-  const prisma = getPrisma(process.env.DATABASE_URL)
+  let prisma = getPrisma(env.DB)
 
   beforeEach(async () => {
     await prisma.$queryRawUnsafe(`TRUNCATE "User";`)
@@ -12,7 +13,7 @@ describe('user model', () => {
   })
 
   test('create user', async () => { 
-    const user = await prisma.user.create({data: {name: 'Paul Atreides'}})
+    let user = await prisma.user.create({data: {name: 'Paul Atreides'}})
 
     expect(user.name).toEqual('Paul Atreides')
   })

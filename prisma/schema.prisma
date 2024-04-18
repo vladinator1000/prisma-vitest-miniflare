@@ -9,21 +9,6 @@ datasource db {
 }
 
 model User {
-  id     Int     @id @default(autoincrement())
-  name   String
-  genres Genre[]
-  events Event[]
-}
-
-model Genre {
-  id     Int     @id @default(autoincrement())
-  name   String  @unique
-  users  User[]
-  events Event[]
-}
-
-model Event {
-  id     Int     @id @default(autoincrement())
-  genres Genre[]
-  users  User[]
+  id   Int    @id @default(autoincrement())
+  name String
 }
