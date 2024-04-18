@@ -7,14 +7,17 @@ export interface Env {
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const prisma = getPrisma(env.DB)
-    const { pathname } = new URL(request.url);
 
-    if (pathname === '/') {
-      await prisma.user.createMany();
-      await prisma.genre.createMany();
-      await prisma.event.createMany()
+    let result = await prisma.user.findMany()
+    
+    if (result.length === 0) {
+      await prisma.user.create({
+        data: {
+          name: 'Paul Atreides'
+        }
+      })
     }
 
-    return new Response('');
+    return new Response(JSON.stringify(result));
   },
 };

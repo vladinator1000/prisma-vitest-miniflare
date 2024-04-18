@@ -1,7 +1,5 @@
 -- CreateTable
 CREATE TABLE "User" (
-    "id" SERIAL NOT NULL,
-    "name" VARCHAR NOT NULL,
-
-    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL
 );
